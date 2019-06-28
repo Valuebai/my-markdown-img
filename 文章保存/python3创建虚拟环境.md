@@ -24,7 +24,11 @@ Python 3.3以上使用venv来代替了原来Python2使用的virtualenv创建虚�
 ###### 2.3 在Mac下创建（待）
 
 ##### 3、在PyCharm下创建虚拟环境
+3.1 安装并激活PyCharm
+这个请自行安装
+官方地址：https://www.jetbrains.com/pycharm/
 
+![在PyCharm下创建虚拟环境](./images/1561707358500.png)
 
 
 【参考】
