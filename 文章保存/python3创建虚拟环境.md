@@ -28,8 +28,12 @@ Python 3.3以上使用venv来代替了原来Python2使用的virtualenv创建虚�
 这个请自行安装
 官方地址：https://www.jetbrains.com/pycharm/
 
+3.2 在PyCharm下创建虚拟环境
+第一步：点击New Project
+第二步：选择下图的New environment
 ![在PyCharm下创建虚拟环境](./images/1561707358500.png)
-
+第三步：点击create即可
+pycharm会为新创建的项目自动建立一个虚拟环境
 
 【参考】
 1、venv官网说明：https://docs.python.org/3/library/venv.html
