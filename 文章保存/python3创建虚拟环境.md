@@ -65,7 +65,7 @@ pycharm会为新创建的项目自动建立一个虚拟环境
 1、venv官网说明：https://docs.python.org/3/library/venv.html
 2、"venv"的详细使用参数
 
-``` python?linenums
+``` python
 usage: venv [-h] [--system-site-packages] [--symlinks] [--clear]
             [--upgrade] [--without-pip] ENV_DIR [ENV_DIR ...]
 
