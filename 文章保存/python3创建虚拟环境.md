@@ -25,7 +25,12 @@ Python 3.3以上使用venv来代替了原来Python2使用的virtualenv创建虚�
 第二步：用cmd进入该文件夹路径
 P.S. 小技巧：直接打开C:\PythonProject\test_venv——输入cmd即可进入dos窗口
 第三步：输入命令搭建虚拟环境：python -m venv . （注：venv 之后一个空格加上一点“.”)
-
+第四步：验证是否安装成功
+1. pip install numpy
+2. python
+3. import numpy
+4. print(numpy) 
+如果输出了numpy的包路径就表示一切正常。
 ```
 2.1.2 启动/退出虚拟环境
 
