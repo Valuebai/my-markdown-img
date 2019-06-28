@@ -19,3 +19,9 @@
 if __name__ == "__main__":
     pass
 ```
+
+至于python中要使用
+#!/usr/bin/python
+还是使用
+#!/usr/bin/env python
+区别：https://www.cnblogs.com/CoXieLearnPython/p/9185669.html
