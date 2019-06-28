@@ -19,6 +19,27 @@ Python 3.3以上使用venv来代替了原来Python2使用的virtualenv创建虚�
 ##### 2、在Win/Mac/Linux下创建虚拟环境
 
 ###### 2.1 在Windows下创建
+2.1.1 创建虚拟环境
+``` python
+第一步：在本地创建项目的文件夹
+第二步：用cmd进入该文件夹路径
+P.S. 小技巧：直接打开C:\PythonProject\test_venv——输入cmd即可进入dos窗口
+第三步：输入命令搭建虚拟环境：python -m venv . （注：venv 之后一个空格加上一点“.”)
+
+```
+2.1.2 启动/退出虚拟环境
+
+``` python
+启动/激活：
+1. 进入C:\PythonProject\test_venv\Scripts
+2. 输入activate.bat即可
+
+退出：
+1. 在激活的虚拟环境状态下(test_venv) C:\PythonProject\test_venv\Scripts>
+2. 输入activate.bat即可
+3. 或者直接关掉
+
+```
 
 ###### 2.2 在Linux下创建（待）
 ###### 2.3 在Mac下创建（待）
