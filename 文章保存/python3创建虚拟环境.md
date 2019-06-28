@@ -5,6 +5,10 @@ grammar_cjkRuby: true
 ---
 本文章默认在python3.7+上运行，不支持py2
 
+Python 3.3以上使用venv来代替了原来Python2使用的virtualenv创建虚拟环境。
+
+需要注意的是，在Python3.3中使用"venv"命令创建的环境不包含"pip"，你需要进行手动安装。在Python3.4中改进了这一个缺陷。
+
 ##### 1、为什么创建虚拟环境
 
  - 搭建独立的python运行环境，不与系统或其他项目产生冲突
