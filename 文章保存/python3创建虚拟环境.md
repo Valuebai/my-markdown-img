@@ -1,6 +1,6 @@
 ---
 title: python3创建虚拟环境
-tags: ppython,小书匠
+tags: python,小书匠
 grammar_cjkRuby: true
 ---
 
