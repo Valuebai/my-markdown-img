@@ -19,7 +19,7 @@ author: Valuebai
 1. 基于规则的，从人类语言抽象出来：主语-谓语-宾语，来创造句子——这里主要关注syntaxtree
 2. 基于概率的，上面Rule Based生成的句子经常四不像，怎么判断一个生成的句子好坏，就得提到【语言模型】用来看生成的句子是否符合人们的说话习惯——这里主要关注1-GRAM,2-GRAM,3-GRAM,4-GRAM...其他的N-GRAM了解下就行，用不上的
 3. 基于数学和分析的
-4. 基于搜索的，会涉及到DFS, BFS动态规划
+4. 基于搜索的，会涉及到DFS, BFS, 图, 动态规划, A star等算法
 
 
 【Me】https://github.com/Valuebai/
