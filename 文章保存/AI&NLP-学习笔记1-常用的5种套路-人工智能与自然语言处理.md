@@ -20,6 +20,7 @@ author: Valuebai
 2. 基于概率的，上面Rule Based生成的句子经常四不像，怎么判断一个生成的句子好坏，就得提到【语言模型】用来看生成的句子是否符合人们的说话习惯——这里主要关注1-GRAM,2-GRAM,3-GRAM,4-GRAM...其他的N-GRAM了解下就行，用不上的
 3. 基于数学和分析的
 4. 基于搜索的，会涉及到DFS, BFS, 图, 动态规划, A star等算法
+5. 机器学习和深度学习，这个后面得专门来讲，因为太复杂了，经常听到的Tensorflow, pytorch等都会涉及到的
 
 
 【Me】https://github.com/Valuebai/
