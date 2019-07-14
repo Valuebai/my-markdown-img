@@ -9,11 +9,15 @@ author: Valuebai
 注意点：先不要保存到github上面，不然图片获取用的是：(./images/1561707358500.png)，会导致复制到CSDN上无法使用
 
 用计算机在处理自然语言（NLP, Natual Language Processing）的过程中，经常用到的5种Paradigm（用现在的话讲，就是“套路”）
-1. Ruled Based
+1. Rule Based 
 2. Probability Based
 3. Mathmatical and Analytic Based
 4. Search Based
 5. Machine Learning(Deep Learning)
+
+上面这几个是常用的套路，没有好坏之分，只是看在哪个场景下更加适用，这几年最火的是基于机器学习/深度学习来做 的
+1. 基于规则的，从人类语言抽象出来：主语-谓语-宾语，来创造句子——这里主要关注syntaxtree
+2. 基于概率的，就得提到【语言模型】，因为Rule Based
 
 
 【Me】https://github.com/Valuebai/
