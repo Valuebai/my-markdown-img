@@ -175,10 +175,9 @@ if __name__ == "__main__":
 Process finished with exit code 0
 
     """
-![enter description here](./images/1563875832530.png)
 
 ```
-
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1563875877985.png)
 
 
 【Me】https://github.com/Valuebai/
