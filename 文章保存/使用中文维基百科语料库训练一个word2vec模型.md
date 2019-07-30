@@ -40,16 +40,20 @@ https://dumps.wikimedia.org/zhwiki/20190720/  （我用的是这个，用UC浏�
 #### 二、语料库文章的提取
 下载完成之后，解压缩得到的是一个xml文件，里面包含了许多的文章，也有许多的日志信息。所以，我们只需要提取xml文件里面的文章就可以了。我们通过WikiExtractor来提取xml文件中的文章，它是一个意大利人写的一个Python脚本专门用来提取维基百科语料库中的文章，将每个文件分割的大小为500M（或者2000M）（修改下面的命令），它是一个通过cmd命令来设置一些参数提取文章，提取步骤如下：
 
-a、WikiExtractor的安装
+##### a、WikiExtractor的安装
 
 将整个WikiExtractor项目clone或者下载到本地，拷贝里面的WikiExtractor.py出来，放到跟上面的xxx.bz2同一个文件夹即可（2019-07-30 github里面没有setup.py，有的教程说要用，直接拿来用就行啦）
 
-b、维基百科语料库文章的提取
-windows下cmd进入路径，包含：
+##### b、维基百科语料库文章的提取
+windows下cmd进入路径，包含下面2个的路径：
 WikiExtractor.py和zhwiki zhwiki-20190720-pages-articles-multistream.xml.bz2
 
 ``` javascript
 python WikiExtractor.py -b 2000M -o zhwiki zhwiki-20190720-pages-articles-multistream.xml.bz2
+
+python WikiExtractor.py -b 500M -o zhwiki zhwiki-20190720-pages-articles-multistream.xml.bz2
+
+# 分割的大小为500M（或者2000M）
 ```
 参数介绍：
 
@@ -72,13 +76,13 @@ python WikiExtractor.py -h
 
 其中省略号表示的就是文章的内容，所以后面我们还需要通过正则化表达式来去除不相关的内容。
 
-c、中文简体和繁体的转换
+##### c、中文简体和繁体的转换
 
 因为维基百科语料库中的文章内容里面的简体和繁体是混乱的，所以我们需要将所有的繁体字转换成为简体。这里我们利用OpenCC来进行转换。
 
 OpenCC的使用教程请参考：https://blog.csdn.net/sinat_29957455/article/details/81290356
 
-d、正则表达式提取文章内容并进行分词
+##### d、正则表达式提取文章内容并进行分词
 
 使用WikiExtractor提取的文章，会包含许多的<doc></doc>，所以我们需要将这些不相关的内容通过正则表达式来去除。然后再通过jieba对文章进行分词，在分词的时候还需要将一些没有实际意义的词进行去除，所以在分词的之后加了一个停用词的去除。将分割之后的文章保存到文件中，每一行表示一篇文章，每个词之间使用空格进行分隔。
 
