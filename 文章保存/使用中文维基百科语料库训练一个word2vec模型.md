@@ -54,6 +54,10 @@ python WikiExtractor.py -b 2000M -o zhwiki zhwiki-20190720-pages-articles-multis
 python WikiExtractor.py -b 500M -o zhwiki zhwiki-20190720-pages-articles-multistream.xml.bz2
 
 # 分割的大小为500M（或者2000M）
+
+# 解压抽取词汇
+
+python bzcat zhwiki-20190720-pages-articles-multistream.xml.bz2 | python WikiExtractor.py -b 500M -o extracted >output.txt
 ```
 参数介绍：
 
@@ -82,6 +86,31 @@ python WikiExtractor.py -h
 
 
 OpenCC的使用教程请参考：https://blog.csdn.net/sinat_29957455/article/details/81290356
+
+
+``` javascript
+opencc -i 需要转换的文件路径 -o 转换后的文件路径 -c 配置文件路径
+```
+
+``` javascript
+我碰到的问题：
+1、用WikiExtractor.py提取后的路径：C:\Users\中文\Desktop\AI-NLP\learn-NLP-luhuibo\lesson-04\zhwiki500\AA\wiki_00
+
+2、在这个路径执行：
+C:\Users\中文\Desktop\AI-NLP\learn-NLP-luhuibo\lesson-04\zhwiki500\AA>opencc -i wiki_00 -o zh_wiki_00 -c C:\Users\中文\Desktop\AI-NLP\learn-NLP-luhuibo\lesson-04\opencc-1.0.4\share\opencc\t2s.json
+——报错：t2s.json not found or not accessible.
+
+在路径执行：C:\Users\壹心理\Desktop\AI-NLP\learn-NLP-luhuibo\lesson-04>opencc -i wiki_00 -o zh_wiki_00 -c opencc-1.0.4\share\opencc\t2s.json
+——上面这个命令是OK的
+
+# 解决方法（t2s.json not found or not accessible.）：
+
+下载完成之后，解压到本地即可。解压之后可以将OpenCC下的bin目录添加到系统环境变量中。
+——不要放到中文路径，直接放到C盘下，C:\opencc-1.0.4\share\opencc\t2s.json
+
+正常的命令是：opencc -i wiki_00 -o zh_wiki_00 -c C:\opencc-1.0.4\share\opencc\t2s.json
+
+```
 
 ##### d、正则表达式提取文章内容并进行分词
 
