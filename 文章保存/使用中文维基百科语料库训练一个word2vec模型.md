@@ -53,11 +53,11 @@ python WikiExtractor.py -b 2000M -o zhwiki zhwiki-20190720-pages-articles-multis
 
 python WikiExtractor.py -b 500M -o zhwiki zhwiki-20190720-pages-articles-multistream.xml.bz2
 
-# 分割的大小为500M（或者2000M）
+# 分割的大小为500M（或者2000M）——一般是100-300M哦
 
 # 解压抽取词汇
 
-python bzcat zhwiki-20190720-pages-articles-multistream.xml.bz2 | python WikiExtractor.py -b 500M -o extracted >output.txt
+python bzcat zhwiki-20190720-pages-articles-multistream.xml.bz2 | python WikiExtractor.py -b 500M -o extracted >output.txt  ——我执行后报can't open file 'bzcat': [Errno 2] No such file or directory，先不处理 了
 ```
 参数介绍：
 
