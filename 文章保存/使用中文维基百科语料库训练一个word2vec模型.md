@@ -35,7 +35,11 @@ gensim官网地址：https://radimrehurek.com/gensim/install.html
 
 #### 一、语料库的下载
 我下载是zhwiki-20190720-pages-articles-multistream.xml.bz2文件，1.5G左右是一个压缩包，下载的时候需要注意文件的名称。
-https://dumps.wikimedia.org/zhwiki/20190720/  （我用的是这个，用UC浏览器下载）
+https://dumps.wikimedia.org/zhwiki/20190720/  （我用的是这个，windows用UC浏览器下载）
+
+linux下载命令：
+wget https://dumps.wikimedia.org/zhwiki/20190720/zhwiki-20190720-pages-articles-multistream.xml.bz2
+
 
 #### 二、语料库文章的提取
 下载完成之后，解压缩得到的是一个xml文件，里面包含了许多的文章，也有许多的日志信息。所以，我们只需要提取xml文件里面的文章就可以了。我们通过WikiExtractor来提取xml文件中的文章，它是一个意大利人写的一个Python脚本专门用来提取维基百科语料库中的文章，将每个文件分割的大小为500M（或者2000M）（修改下面的命令），它是一个通过cmd命令来设置一些参数提取文章，提取步骤如下：
@@ -121,4 +125,4 @@ C:\Users\中文\Desktop\AI-NLP\learn-NLP-luhuibo\lesson-04\zhwiki500\AA>opencc -
 【Me】https://github.com/Valuebai/
 
 【参考】
-1、出处：地址
+1、基于word2vec使用中文wiki语料库训练词向量：地址https://www.jianshu.com/p/e21dd72e391e
