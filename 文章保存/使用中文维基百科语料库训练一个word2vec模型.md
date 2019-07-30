@@ -80,7 +80,6 @@ python WikiExtractor.py -h
 
 因为维基百科语料库中的文章内容里面的简体和繁体是混乱的，所以我们需要将所有的繁体字转换成为简体。这里我们利用OpenCC来进行转换。
 
-OpenCC的github地址： https://github.com/BYVoid/OpenCC
 
 OpenCC的使用教程请参考：https://blog.csdn.net/sinat_29957455/article/details/81290356
 
