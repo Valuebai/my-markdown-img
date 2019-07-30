@@ -125,4 +125,5 @@ C:\Users\中文\Desktop\AI-NLP\learn-NLP-luhuibo\lesson-04\zhwiki500\AA>opencc -
 【Me】https://github.com/Valuebai/
 
 【参考】
-1、基于word2vec使用中文wiki语料库训练词向量：地址https://www.jianshu.com/p/e21dd72e391e
+1、基于word2vec使用中文wiki语料库训练词向量：https://www.jianshu.com/p/e21dd72e391e
+2、利用Python构建Wiki中文语料词向量模型试验：https://github.com/AimeeLee77/wiki_zh_word2vec
