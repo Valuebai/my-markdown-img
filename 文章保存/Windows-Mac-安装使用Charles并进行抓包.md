@@ -3,8 +3,6 @@ title: Windows-Mac-安装使用Charles并进行抓包
 tags:  charles, Windows安装charles, Mac安装charles, charles使用
 author:  [Valuebai](https://github.com/Valuebai/)
 ---
-
-
 charles是神马？
     一个HTTP代理服务器,HTTP监视器,反转代理服务器·它允许一个开发者查看所有连接互联网的HTTP通信·这些包括request, response现HTTP headers （包含cookies与caching信息），常用于手机（android, ios）抓包，电脑浏览器抓包，弱网测试，重定向等功能，前期的安装对于新人会有点头大，最好问下老鸟。
 
