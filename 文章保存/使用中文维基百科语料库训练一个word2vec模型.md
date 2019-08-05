@@ -1,6 +1,6 @@
 ---
 title: 使用中文维基百科语料库训练一个word2vec模型 
-tags: python, word2vec模型, wiki中文语料训练, word2vec模型 
+tags: python, word2vec模型, wiki中文语料训练, gensim
 author: Valuebai
 ---
 本文章默认在python3.7+上运行
