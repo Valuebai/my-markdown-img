@@ -337,7 +337,9 @@ if __name__ == "__main__":
 ![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1564987225443.png)
 ![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1564987239131.png)
 
-【Me】https://github.com/Valuebai/
+【代码】https://github.com/Valuebai/learn-NLP-luhuibo/tree/master/lesson-04
+主要是：wiki_extractor_case.py和wiki_extractor_test.py
+
 
 【参考】
 1、使用中文维基百科语料库训练一个word2vec模型：https://blog.csdn.net/sinat_29957455/article/details/81432846
