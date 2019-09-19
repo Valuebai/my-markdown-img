@@ -61,10 +61,10 @@ y = θ * x + Σ
 对于上面得到的成本函数,  L1 L2 就只是在这个误差公式后面多加了一个东西, 让误差不仅仅取决于拟合数据拟合的好坏, 而且取决于像刚刚  那些参数θ值的大小. 如果是每个参数的平方, 那么我们称它为 L2正则化, 如果是每个参数的绝对值, 我们称为 L1 正则化。
 
 L1正则化：所有系数的绝对值之和；
-![enter description here](./images/1568903269699.png)
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568904098188.png)
 
 L2正则化：所有系数的平方之和；
-![enter description here](./images/1568903288987.png)
+
 
 
 这里简单的提一下多项式回归。
