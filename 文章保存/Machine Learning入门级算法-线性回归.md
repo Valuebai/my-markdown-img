@@ -25,10 +25,11 @@ y = θ * x + Σ
 - θ 为每个特征值的权重(参数) θ = (θ1, θ2, ..., θn)
 - y 为每个X对应的标签值(真实值)
 - Σ 为误差值
-![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903016640.png)图(1)
+
+![图(1)](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903016640.png)
 
 在给定特征x和标签y的情况下，求出参数w(权重)的合理值。那么其实我们要去预测的值其实就是h(x):
-![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903000065.png)图(2)
+![图(2)](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903000065.png)
 
 既然如此, 随机误差值Σ的值等于样本的真实值减去样本的预测值h(x)（Σ = y - h(x) 这就是我们的目标函数）。而此时只要求出误差Σ的最小值，即得到参数θ。
 
