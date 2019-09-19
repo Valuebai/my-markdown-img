@@ -65,7 +65,7 @@ L1正则化：所有系数的绝对值之和；
 
 L2正则化：所有系数的平方之和；
 
-
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568904235367.png)
 
 这里简单的提一下多项式回归。
 多项式回归和线性回归基本类似只不过其基准函数是多项式方程。
