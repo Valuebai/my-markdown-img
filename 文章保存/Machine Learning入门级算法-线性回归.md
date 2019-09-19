@@ -29,18 +29,22 @@ y = θ * x + Σ
 ![图(1)](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903016640.png)
 
 在给定特征x和标签y的情况下，求出参数w(权重)的合理值。那么其实我们要去预测的值其实就是h(x):
+
 ![图(2)](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903000065.png)
 
 既然如此, 随机误差值Σ的值等于样本的真实值减去样本的预测值h(x)（Σ = y - h(x) 这就是我们的目标函数）。而此时只要求出误差Σ的最小值，即得到参数θ。
 
 在一定的数据量情况下令其服从高斯分布得到样本误差的高斯概率密度函数：
-![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903056538.png)图(3)
+
+![图(3)](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903056538.png)
 
 随机误差Σ联合概率，得到似然函数如下：
-![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903102612.png)图(4)
+
+![图(4)](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903102612.png)
 
 对图(4)取对数似然得到J(θ)，考虑在θ取什么值的情况下J(θ)值最大：
-![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903112679.png)图(5)
+
+![图(5)](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1568903112679.png)
 
 这里对数似然化简后，得到的J(θ)为最小二乘。此时要求θ为什么值的时候使得J(θ)最小（去掉部分为定值不要考虑，因为化简之前需要求J(θ)最大值，去掉一个符号之后自然需要求其最小值，系数1/2 不去掉是因为后面化简会用到）。
 
