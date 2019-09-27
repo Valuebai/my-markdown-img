@@ -73,7 +73,7 @@ author:  [Valuebai](https://github.com/Valuebai/)
 
 TextRank算法是一种抽取式的无监督的文本摘要方法。让我们看一下我们将遵循的TextRank算法的流程：
 
-![textrank](../images/TextRank算法.jpg)
+
 
 
 1. 第一步是把所有文章整合成文本数据
