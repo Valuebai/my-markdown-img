@@ -67,6 +67,10 @@ phi, the distribution of topics for each document i
 6. Analyzing LDA model results 分析LDA模型结果
 
 
+
+![gensim流程](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571649222856.png)
+
+
 ## 1. Loading data 加载数据
 
 在本教程中，我们将使用NIPS大会上发表的论文数据集。NIPS大会(神经信息处理系统)是机器学习领域最负盛名的年度事件之一。在每次的NIPS大会上，参会者都会发表大量的研究论文。此CSV文件包含了从1987年到2016年(29年!)发表的不同的NIPS论文的信息。这些论文讨论了机器学习领域的各种各样的主题，从神经网络到优化方法等等。
