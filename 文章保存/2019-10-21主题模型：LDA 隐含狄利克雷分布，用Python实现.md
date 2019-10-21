@@ -57,6 +57,23 @@ phi, the distribution of topics for each document i
 
 有时候打不开，可以用https://nbviewer.jupyter.org 进行加载
 
+1. Loading data 加载数据
+
+2. Data cleaning 数据清洗
+ 
+3. Exploratory analysis 探索性分析
+
+4. Preparing data for LDA analysis 为LDA分析准备数据
+
+5. LDA model training LDA模型训练
+
+6. Analyzing LDA model results 分析LDA模型结果
+
+
+## Loading data 加载数据
+
+
+
 【Me】https://github.com/Valuebai/
 
 【参考】
