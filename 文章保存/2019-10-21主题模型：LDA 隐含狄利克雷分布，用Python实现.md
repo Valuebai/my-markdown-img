@@ -317,6 +317,8 @@ with open(LDAvis_data_filepath, 'w') as f:
 with open(LDAvis_data_filepath) as f:
     LDAvis_prepared = pickle.load(f)
 pyLDAvis.save_html(LDAvis_prepared, './ldavis_prepared_' + str(number_topics) + '.html')
+
+# 在win10上运行要很久，先中断了，有时间再跑下
 ```
 
 
