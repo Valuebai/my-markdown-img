@@ -81,10 +81,11 @@ nips_papers.csv.gz文件的下载地址
 ```python
 # Importing modules
 import pandas as pd
-import os
-os.chdir('..')
+
+
 # Read data into papers
-papers = pd.read_csv('./data/nips_papers.csv')
+papers = pd.read_csv('../../data/nips_papers.csv.gz')
+
 # Print head
 papers.head()
 
@@ -208,6 +209,31 @@ plot_10_most_common_words(count_data, count_vectorizer)
 
 ![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571643977030.png)
 
+```md
+文本数据预处理的第一步通常是进行分词，分词后会进行向量化的操作。在介绍向量化之前，我们先来了解下词袋模型。
+
+ 
+1.词袋模型（Bag of words，简称 BoW ）
+ 
+  词袋模型假设我们不考虑文本中词与词之间的上下文关系，仅仅只考虑所有词的权重。而权重与词在文本中出现的频率有关。
+
+  词袋模型首先会进行分词，在分词之后，通过统计每个词在文本中出现的次数，我们就可以得到该文本基于词的特征，如果将各个文本样本的这些词与对应的词频放在一起，就是我们常说的向量化。向量化完毕后一般也会使用 TF-IDF 进行特征的权重修正，再将特征进行标准化。 再进行一些其他的特征工程后，就可以将数据带入机器学习模型中计算。
+
+  词袋模型的三部曲：分词（tokenizing），统计修订词特征值（counting）与标准化（normalizing）。
+
+  词袋模型有很大的局限性，因为它仅仅考虑了词频，没有考虑上下文的关系，因此会丢失一部分文本的语义。
+
+  在词袋模型统计词频的时候，可以使用 sklearn 中的 CountVectorizer 来完成。下面具体说明。
+
+ 
+
+2.词频向量化
+ 
+
+  CountVectorizer 类会将文本中的词语转换为词频矩阵，例如矩阵中包含一个元素a[i][j]，它表示j词在i类文本下的词频。它通过 fit_transform 函数计算各个词语出现的次数，通过get_feature_names()可获取词袋中所有文本的关键字，通过 toarray()可看到词频矩阵的结果。
+
+官方文件中提到其参数很多默认值就很好，无需再改动，详细参数设置参见：点击打开链接。https://sklearn.apachecn.org/
+```
 
 
 ## 5. LDA model training and results visualization LDA模型训练和结果视觉化
@@ -269,20 +295,22 @@ Now that we have a trained model let’s visualize the topics for interpretabili
 ```python
 %%time
 from pyLDAvis import sklearn as sklearn_lda
-import pickle 
+import pickle
 import pyLDAvis
-LDAvis_data_filepath = os.path.join('./ldavis_prepared_'+str(number_topics))
+import os
+
+LDAvis_data_filepath = os.path.join('./ldavis_prepared_' + str(number_topics))
 # # this is a bit time consuming - make the if statement True
 # # if you want to execute visualization prep yourself
 if 1 == 1:
-LDAvis_prepared = sklearn_lda.prepare(lda, count_data, count_vectorizer)
+    LDAvis_prepared = sklearn_lda.prepare(lda, count_data, count_vectorizer)
 with open(LDAvis_data_filepath, 'w') as f:
-        pickle.dump(LDAvis_prepared, f)
-        
+    pickle.dump(LDAvis_prepared, f)
+
 # load the pre-prepared pyLDAvis data from disk
 with open(LDAvis_data_filepath) as f:
     LDAvis_prepared = pickle.load(f)
-pyLDAvis.save_html(LDAvis_prepared, './ldavis_prepared_'+ str(number_topics) +'.html')
+pyLDAvis.save_html(LDAvis_prepared, './ldavis_prepared_' + str(number_topics) + '.html')
 ```
 
 
