@@ -89,7 +89,7 @@ import pandas as pd
 import os
 os.chdir('..')
 # Read data into papers
-papers = pd.read_csv('./data/NIPS Papers/papers.csv')
+papers = pd.read_csv('./data/nips_papers.csv')
 # Print head
 papers.head()
 
