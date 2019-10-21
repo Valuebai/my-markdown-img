@@ -72,7 +72,21 @@ phi, the distribution of topics for each document i
 
 ## Loading data 加载数据
 
+在本教程中，我们将使用NIPS大会上发表的论文数据集。NIPS大会(神经信息处理系统)是机器学习领域最负盛名的年度事件之一。在每次的NIPS大会上，参会者都会发表大量的研究论文。此CSV文件包含了从1987年到2016年(29年!)发表的不同的NIPS论文的信息。这些论文讨论了机器学习领域的各种各样的主题，从神经网络到优化方法等等。
 
+首先，我们将研究CSV文件，以确定我们可以使用什么类型的数据进行分析，以及它的结构是怎样的。一篇研究论文通常由标题、摘要和正文组成。
+
+```python
+# Importing modules
+import pandas as pd
+import os
+os.chdir('..')
+# Read data into papers
+papers = pd.read_csv('./data/NIPS Papers/papers.csv')
+# Print head
+papers.head()
+
+```
 
 【Me】https://github.com/Valuebai/
 
