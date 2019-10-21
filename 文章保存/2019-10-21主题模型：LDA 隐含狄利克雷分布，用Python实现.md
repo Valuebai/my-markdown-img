@@ -240,13 +240,29 @@ print_topics(lda, count_vectorizer, number_words)
 
 
 
-![enter description here](https://markdown.xiaoshujiang.com/img/spinner.gif "[[[1571644137255]]]" )
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571644137255.png)
 
 
 
 ## 6. Analyzing LDA model results 分析LDA模型结果
 
+Now that we have a trained model let’s visualize the topics for interpretability. To do so, we’ll use a popular visualization package, pyLDAvis which is designed to help interactively with:
 
+[pyLDAvis包](https://github.com/bmabey/pyLDAvis)的目的是帮助用户在主题模型中解释适合于文本数据集的主题。pyLDAvis开发的交互式可视化工具对以下两方面都很有帮助:
+
+
+
+1. 更好地理解和解释个别主题
+
+2. 更好地理解主题之间的关系。
+
+
+
+对于(1),通过使用不同的λ参数，你可以手动选择每个主题以查看其最频繁的和/或“相关的”词语。当你试图为每个主题指定一个人可解释的名称或“含义”时，这将有所帮助。
+
+
+
+对于(2)，探索主题间距图（Intertopic Distance Plot ）可以帮助你了解主题之间的关系，包括主题组之间潜在的高级结构。
 
 
 
