@@ -1,6 +1,6 @@
 ---
 title: 2019-10-21主题模型：LDA 隐含狄利克雷分布，用Python实现
-tags: python,
+tags: python, LDA, sklearn, gensim
 author:  Valuebai
 ---
 
@@ -70,7 +70,7 @@ phi, the distribution of topics for each document i
 6. Analyzing LDA model results 分析LDA模型结果
 
 
-## Loading data 加载数据
+## 1. Loading data 加载数据
 
 在本教程中，我们将使用NIPS大会上发表的论文数据集。NIPS大会(神经信息处理系统)是机器学习领域最负盛名的年度事件之一。在每次的NIPS大会上，参会者都会发表大量的研究论文。此CSV文件包含了从1987年到2016年(29年!)发表的不同的NIPS论文的信息。这些论文讨论了机器学习领域的各种各样的主题，从神经网络到优化方法等等。
 
@@ -87,6 +87,169 @@ papers = pd.read_csv('./data/NIPS Papers/papers.csv')
 papers.head()
 
 ```
+
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571643440599.png)
+
+
+## 2. Data cleaning 数据清洗
+ ### **去掉多余列**
+
+
+对于论文的分析，我们只对与论文相关的文本数据以及论文发表年份感兴趣。由于该文件包含一些元数据，如id和文件名，因此删除所有不包含有用文本信息的列是很有必要的。
+
+```python
+# Remove the columns
+papers = papers.drop(columns=['id', 'event_type', 'pdf_name'], axis=1)
+# Print out the first rows of papers
+papers.head()
+```
+
+ ![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571643493003.png)
+ 
+ 
+ ### **删除标点符号/转换为小写**
+
+
+现在，我们将对论文文本内容执行一些简单的预处理，以便它们更易于分析。我们将使用一个正则表达式来删除标题中的任何标点符号。然后我们将执行小写字母转换。
+```python
+# Load the regular expression library
+import re
+# Remove punctuation
+papers['paper_text_processed'] = papers['paper_text'].map(lambda x: re.sub('[,\.!?]', '', x))
+# Convert the titles to lowercase
+papers['paper_text_processed'] = papers['paper_text_processed'].map(lambda x: x.lower())
+# Print out the first rows of papers
+papers['paper_text_processed'].head()
+```
+
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571643611307.png)
+
+
+ 
+ 
+## 3. Exploratory analysis 探索性分析
+
+
+为了验证预处理是否正确执行，我们可以对研究论文的文本创建一个[词云](https://github.com/amueller/word_cloud)。这将给我们一个最常见单词的可视化表示。可视化是理解我们是否仍然在正确的轨道上的关键!此外，它还允许我们在进一步分析文本数据之前验证是否需要对文本数据进行额外的预处理。
+
+
+
+Python有大量的开放库!我们将使用Andreas Mueller的wordcloud库，而不是自己开发一种方法来创建词云：
+
+```python
+# Import the wordcloud library
+from wordcloud import WordCloud
+# Join the different processed titles together.
+long_string = ','.join(list(papers['paper_text_processed'].values))
+# Create a WordCloud object
+wordcloud = WordCloud(background_color="white", max_words=5000, contour_width=3, contour_color='steelblue')
+# Generate a word cloud
+wordcloud.generate(long_string)
+# Visualize the word cloud
+wordcloud.to_image()
+```
+
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571643818750.png)
+
+
+
+
+## 4. Preparing data for LDA analysis 为LDA分析准备数据
+
+LDA不直接处理文本数据。首先，需要将文档转换为简单的向量表示形式。然后，LDA将使用这个表示来确定主题。“文档向量”的每个条目都对应于一个单词在文档中出现的次数(词袋模型，即BOW表示)。
+
+
+
+接下来，我们将把标题列表转换为向量列表，所有向量的长度都等于对应的词汇。
+
+
+
+然后，我们将根据这个操作的结果(文档向量列表)来标出最常见的10个单词。作为检查，这些单词也应该出现在词云中。
+
+```python
+# Load the library with the CountVectorizer method
+from sklearn.feature_extraction.text import CountVectorizer
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style('whitegrid')
+%matplotlib inline
+# Helper function
+def plot_10_most_common_words(count_data, count_vectorizer):
+    import matplotlib.pyplot as plt
+    words = count_vectorizer.get_feature_names()
+    total_counts = np.zeros(len(words))
+    for t in count_data:
+        total_counts+=t.toarray()[0]
+    
+    count_dict = (zip(words, total_counts))
+    count_dict = sorted(count_dict, key=lambda x:x[1], reverse=True)[0:10]
+    words = [w[0] for w in count_dict]
+    counts = [w[1] for w in count_dict]
+    x_pos = np.arange(len(words)) 
+    
+    plt.figure(2, figsize=(15, 15/1.6180))
+    plt.subplot(title='10 most common words')
+    sns.set_context("notebook", font_scale=1.25, rc={"lines.linewidth": 2.5})
+    sns.barplot(x_pos, counts, palette='husl')
+    plt.xticks(x_pos, words, rotation=90) 
+    plt.xlabel('words')
+    plt.ylabel('counts')
+    plt.show()
+# Initialise the count vectorizer with the English stop words
+count_vectorizer = CountVectorizer(stop_words='english')
+# Fit and transform the processed titles
+count_data = count_vectorizer.fit_transform(papers['paper_text_processed'])
+# Visualise the 10 most common words
+plot_10_most_common_words(count_data, count_vectorizer)
+```
+
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571643977030.png)
+
+
+
+## 5. LDA model training and results visualization LDA模型训练和结果视觉化
+
+我们唯一要调整的参数是LDA算法中的主题数量。通常，人们会计算“perplexity（困惑度）”指标来确定多少数量的主题是最好的，然后迭代不同数量的主题，直到找到最低的“perplexity”。在下一篇文章中，我们将介绍模型评估和调优概念，并探讨广泛使用的自然语言处理工具包Gensim。
+
+```python
+
+import warnings
+warnings.simplefilter("ignore", DeprecationWarning)
+# Load the LDA model from sk-learn
+from sklearn.decomposition import LatentDirichletAllocation as LDA
+ 
+# Helper function
+def print_topics(model, count_vectorizer, n_top_words):
+    words = count_vectorizer.get_feature_names()
+    for topic_idx, topic in enumerate(model.components_):
+        print("\nTopic #%d:" % topic_idx)
+        print(" ".join([words[i]
+                        for i in topic.argsort()[:-n_top_words - 1:-1]]))
+        
+# Tweak the two parameters below
+number_topics = 5
+number_words = 10
+# Create and fit the LDA model
+lda = LDA(n_components=number_topics, n_jobs=-1)
+lda.fit(count_data)
+# Print the topics found by the LDA model
+print("Topics found via LDA:")
+print_topics(lda, count_vectorizer, number_words)
+```
+
+
+
+![enter description here](https://markdown.xiaoshujiang.com/img/spinner.gif "[[[1571644137255]]]" )
+
+
+
+## 6. Analyzing LDA model results 分析LDA模型结果
+
+
+
+
+
 
 【Me】https://github.com/Valuebai/
 
