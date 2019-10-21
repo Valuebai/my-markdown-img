@@ -76,6 +76,13 @@ phi, the distribution of topics for each document i
 
 首先，我们将研究CSV文件，以确定我们可以使用什么类型的数据进行分析，以及它的结构是怎样的。一篇研究论文通常由标题、摘要和正文组成。
 
+```md
+nips_papers.csv.gz文件的下载地址
+链接：https://pan.baidu.com/s/1su3q9Rr2luU89Kr9K7rPIA&shfl=sharepset 
+提取码：jva4 
+复制这段内容后打开百度网盘手机App，操作更方便哦
+```
+
 ```python
 # Importing modules
 import pandas as pd
