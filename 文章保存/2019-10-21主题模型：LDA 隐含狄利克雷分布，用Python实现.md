@@ -41,9 +41,11 @@ phi, the distribution of topics for each document i
 
 ## Parameters of LDA
 > **Alpha parameter** is Dirichlet prior concentration parameter that represents document-topic density — with a higher alpha, documents are assumed to be made up of more topics and result in more specific topic distribution per document.
+
 > **Beta parameter** is the same prior concentration parameter that represents topic-word density — with high beta, topics are assumed to made of up most of the words and result in a more specific word distribution per topic.
 
 > **α参数**是Dirichlet先验浓度参数,表示文档-主题密度，α值越高，就可以假定文档由更多的主题组成，从而导致每个文档的主题分布更加具体。
+
 > **β参数**与先验浓度参数相同,表示主题词密度的，β值越高，就可以假定主题由大部分单词组成，从而导致每个主题的单词分布更加具体。
 
 ## LDA Implementation
