@@ -291,9 +291,17 @@ pyLDAvis.save_html(LDAvis_prepared, './ldavis_prepared_'+ str(number_topics) +'.
 
 ## Closing Notes
 
+在过去的十年里，机器学习已经变得越来越流行，最近在计算可用性方面的进步已经导致研究该领域的人数的指数级增长，人们正在寻找如何将新方法结合起来，从而推动自然语言处理领域的发展。通常，我们将主题模型视为黑箱算法，但我希望这篇文章能够阐明它背后的数学原理、直觉和高级代码，并帮助你开始处理任何文本数据。
 
+
+
+如上所述，在下一篇文章中，我们将更深入地了解如何评估主题模型的性能，优化超参数，使其能够部署到生产环境中。
+
+## Sources:
+
+[1] Topic model — Wikipedia. https://en.wikipedia.org/wiki/Topic_model
+[2] Distributed Strategies for Topic Modeling. https://www.ideals.illinois.edu/bitstream/handle/2142/46405/ParallelTopicModels.pdf?sequence=2&isAllowed=y
+[3] Topic Mapping — Software — Resources — Amaral Lab. https://amaral.northwestern.edu/resources/software/topic-mapping
+[4] A Survey of Topic Modeling in Text Mining. https://thesai.org/Downloads/Volume6No1/Paper_21-A_Survey_of_Topic_Modeling_in_Text_Mining.pdf
 
 【Me】https://github.com/Valuebai/
-
-【参考】
-1、出处：地址
