@@ -66,7 +66,7 @@ phi, the distribution of topics for each document i
 
 6. Analyzing LDA model results 分析LDA模型结果
 
-
+gensim的实现流程，参考
 
 ![gensim流程](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571649222856.png)
 
