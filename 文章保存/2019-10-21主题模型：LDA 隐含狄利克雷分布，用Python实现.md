@@ -34,11 +34,28 @@ In this article, we’ll take a closer look at **LDA**, and implement our first 
 ## Theoretical Overview
 
 **根据定义，LDA是给定语料库的生成概率模型。其基本思想是将文档表示为潜在主题的随机混合，并对每个主题通过单词分布进行特征化。**
-![http://chdoig.github.io/pytexas2015-topic-modeling/#/3/4](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571642518975.png)
+![LDA的底层算法, http://chdoig.github.io/pytexas2015-topic-modeling/#/3/4](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571642518975.png)
 
+We can describe the generative process of LDA as, given the M number of documents, N number of words, and prior K number of topics, the model trains to output:
+psi, the distribution of words for each topic K
+phi, the distribution of topics for each document i
 
-LDA的底层算法
+我们可以把LDA的处理过程进行如下描述，给定M个文档、N个单词和估计的K个主题, LDA模型训练输出的结果：
+- psi，表示每个主题K的单词分布
+- phi，表示每个文档 i 的主题分布。
 
+## Parameters of LDA
+> **Alpha parameter** is Dirichlet prior concentration parameter that represents document-topic density — with a higher alpha, documents are assumed to be made up of more topics and result in more specific topic distribution per document.
+> **Beta parameter** is the same prior concentration parameter that represents topic-word density — with high beta, topics are assumed to made of up most of the words and result in a more specific word distribution per topic.
+
+> **α参数**是Dirichlet先验浓度参数,表示文档-主题密度，α值越高，就可以假定文档由更多的主题组成，从而导致每个文档的主题分布更加具体。
+> **β参数**与先验浓度参数相同,表示主题词密度的，β值越高，就可以假定主题由大部分单词组成，从而导致每个主题的单词分布更加具体。
+
+## LDA Implementation
+
+[LDA的代码实现，具体看github: https://github.com/kapadias/mediumposts/blob/master/nlp/published_notebooks/Introduction%20to%20Topic%20Modeling.ipynb](https://github.com/kapadias/mediumposts/blob/master/nlp/published_notebooks/Introduction%20to%20Topic%20Modeling.ipynb)
+
+有时候打不开，可以用https://nbviewer.jupyter.org 进行加载
 
 【Me】https://github.com/Valuebai/
 
