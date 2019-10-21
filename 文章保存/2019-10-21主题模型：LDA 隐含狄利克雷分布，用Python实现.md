@@ -33,11 +33,8 @@ In this article, we’ll take a closer look at **LDA**, and implement our first 
 
 ## Theoretical Overview
 
-隐含狄利克雷分布(LDA)
-
-
-根据定义，LDA是给定语料库的生成概率模型。其基本思想是将文档表示为潜在主题的随机混合，并对每个主题通过单词分布进行特征化。
-
+**根据定义，LDA是给定语料库的生成概率模型。其基本思想是将文档表示为潜在主题的随机混合，并对每个主题通过单词分布进行特征化。**
+![http://chdoig.github.io/pytexas2015-topic-modeling/#/3/4](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571642518975.png)
 
 
 LDA的底层算法
