@@ -329,12 +329,12 @@ pyLDAvis.save_html(LDAvis_prepared, './ldavis_prepared_' + str(number_topics) + 
 
 ## Sources:
 
-[1] Topic model — Wikipedia. https://en.wikipedia.org/wiki/Topic_model
-[2] Distributed Strategies for Topic Modeling. https://www.ideals.illinois.edu/bitstream/handle/2142/46405/ParallelTopicModels.pdf?sequence=2&isAllowed=y
-[3] Topic Mapping — Software — Resources — Amaral Lab. https://amaral.northwestern.edu/resources/software/topic-mapping
-[4] A Survey of Topic Modeling in Text Mining. https://thesai.org/Downloads/Volume6No1/Paper_21-A_Survey_of_Topic_Modeling_in_Text_Mining.pdf
+- [1] Topic model — Wikipedia. https://en.wikipedia.org/wiki/Topic_model
+- [2] Distributed Strategies for Topic Modeling. https://www.ideals.illinois.edu/bitstream/handle/2142/46405/ParallelTopicModels.pdf?sequence=2&isAllowed=y
+- [3] Topic Mapping — Software — Resources — Amaral Lab. https://amaral.northwestern.edu/resources/software/topic-mapping
+- [4] A Survey of Topic Modeling in Text Mining. https://thesai.org/Downloads/Volume6No1/Paper_21-A_Survey_of_Topic_Modeling_in_Text_Mining.pdf
 
-原文（英文）发表地址：[Topic Modeling in Python: Latent Dirichlet Allocation (LDA)](https://towardsdatascience.com/end-to-end-topic-modeling-in-python-latent-dirichlet-allocation-lda-35ce4ed6b3e0)
+- 原文（英文）发表地址：[Topic Modeling in Python: Latent Dirichlet Allocation (LDA)](https://towardsdatascience.com/end-to-end-topic-modeling-in-python-latent-dirichlet-allocation-lda-35ce4ed6b3e0)
 
-中文发表地址：[Python中的端对端主题建模: 隐含狄利克雷分布(LDA)](https://mp.weixin.qq.com/s?__biz=MjM5NzU0MzU0Nw==&mid=2651382805&idx=1&sn=440b18df09f2c9e67a6c025d4239093c&scene=0#wechat_redirect)
-【Me】https://github.com/Valuebai/
+- 中文发表地址：[Python中的端对端主题建模: 隐含狄利克雷分布(LDA)](https://mp.weixin.qq.com/s?__biz=MjM5NzU0MzU0Nw==&mid=2651382805&idx=1&sn=440b18df09f2c9e67a6c025d4239093c&scene=0#wechat_redirect)
+- 【Me】https://github.com/Valuebai/
