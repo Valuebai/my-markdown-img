@@ -50,7 +50,7 @@ phi, the distribution of topics for each document i
 
 ## LDA Implementation
 
-[LDA的代码实现，具体看github: https://github.com/kapadias/mediumposts/blob/master/nlp/published_notebooks/Introduction%20to%20Topic%20Modeling.ipynb](https://github.com/kapadias/mediumposts/blob/master/nlp/published_notebooks/Introduction%20to%20Topic%20Modeling.ipynb)
+[LDA的代码实现，具体看github: https://github.com/Valuebai/learn-NLP-luhuibo/blob/master/lesson-11-project-02/LDA/Introduction_to_Topic_LDA_Modeling.ipynb](https://github.com/Valuebai/learn-NLP-luhuibo/blob/master/lesson-11-project-02/LDA/Introduction_to_Topic_LDA_Modeling.ipynb)
 
 有时候打不开，可以用https://nbviewer.jupyter.org 进行加载
 
