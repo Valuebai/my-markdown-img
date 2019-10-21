@@ -1,5 +1,5 @@
 ---
-title: 2019-10-21主题模型：LDA 隐含狄利克雷分布，用Python实现
+title: 2019-10-21NLP主题模型：LDA 隐含狄利克雷分布，用Python+sklearn实现
 tags: python, LDA, sklearn, gensim
 author:  Valuebai
 ---
