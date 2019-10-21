@@ -284,7 +284,12 @@ pyLDAvis.save_html(LDAvis_prepared, './ldavis_prepared_'+ str(number_topics) +'.
 ```
 
 
-![enter description here](https://markdown.xiaoshujiang.com/img/spinner.gif "[[[1571644279136]]]" )
+
+
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1571644288533.png)
+
+
+## Closing Notes
 
 
 
