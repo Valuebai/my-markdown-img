@@ -319,6 +319,16 @@ with open(LDAvis_data_filepath) as f:
 pyLDAvis.save_html(LDAvis_prepared, './ldavis_prepared_' + str(number_topics) + '.html')
 
 # 在win10上运行要很久，先中断了，有时间再跑下
+
+
+# 或者用下面的代码，自己调整下参数
+15.可视化主题 - 关键字
+现在已经构建了LDA模型，下一步是检查生成的主题和关联的关键字。没有比pyLDAvis包的交互式图表更好的工具，并且设计为与jupyter笔记本一起使用。
+
+# Visualize the topics
+pyLDAvis.enable_notebook()
+vis = pyLDAvis.gensim.prepare(lda_model, corpus, id2word)
+vis
 ```
 
 
