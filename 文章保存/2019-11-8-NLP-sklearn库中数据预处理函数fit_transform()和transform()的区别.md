@@ -54,17 +54,20 @@ print(scaler.fit_transform(data))
 涉及到这两个函数的代码如下：
 
  
+```python
 
-[python] view plain copy
-
-# 从sklearn.preprocessing导入StandardScaler  
-from sklearn.preprocessing import StandardScaler  
-# 标准化数据，保证每个维度的特征数据方差为1，均值为0，使得预测结果不会被某些维度过大的特征值而主导  
-ss = StandardScaler()  
-# fit_transform()先拟合数据，再标准化  
-X_train = ss.fit_transform(X_train)  
-# transform()数据标准化  
-X_test = ss.transform(X_test)  
+# 从sklearn.preprocessing导入StandardScaler
+from sklearn.preprocessing import StandardScaler
+# 标准化数据，保证每个维度的特征数据方差为1，均值为0，使得预测结果不会被某些维度过大的特征值而主导
+ss = StandardScaler()
+# fit_transform()先拟合数据，再标准化
+X_train = ss.fit_transform(X_train)
+# transform()数据标准化
+X_test = ss.transform(X_test)
+————————————————
+版权声明：本文为CSDN博主「nana-li」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/quiet_girl/article/details/72517053
+```
 
 我们先来看一下这两个函数的API以及参数含义：
 
