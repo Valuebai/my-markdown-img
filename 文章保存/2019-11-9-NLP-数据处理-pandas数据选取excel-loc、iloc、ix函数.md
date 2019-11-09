@@ -93,7 +93,66 @@ ix——结合前两种的混合索引，即可以是行序号，也可以是行
 
 
 
+```md
+例：
 
+     import numpy as np
+
+   import pandas as pd
+
+df=pd.DataFrame(np.arange(0,60,2).reshape(10,3),columns=list('abc'))
+print(df)
+     a    b    c
+ 0  0   2    4
+1   6   8  10
+2 12 14 16
+3 18 20 22
+4 24 26 28
+5 30 32 34
+6 36 38 40
+7 42 44 46
+8 48 50 52
+9 54 56 58
+
+
+print df.iloc[0] #输出第0行所有列内容
+a 0
+b 2
+c 4
+Name: 0, dtype: int32
+
+ print df.iloc[0:3] #输出0至3行所有列内容
+
+      a     b    c
+
+0  0     2    4
+1  6     8  10
+2 12 14 16
+
+print df.iloc[1,2] #输出第一行第二列
+   10
+
+ print df.iloc[1,‘c’]  #输出第一行第二列，因为用了标签索引，所以会报错
+
+ValueError: Location based indexing can only have [integer, integer slice (START point is INCLUDED, END point is EXCLUDED), listlike of integers, boolean array] types
+
+print df.loc[0,'a']
+ 0
+
+print df.loc[0:3,['a','b']]
+      a   b
+0    0  2
+1   6   8
+2 12 14
+3 18 20
+
+print df.loc[[1,5],['b','c']]
+     b  c
+1  8 10
+5 32 34
+
+为便于区分，所有屏幕输出结果，全部用斜体
+```
 
 
 
