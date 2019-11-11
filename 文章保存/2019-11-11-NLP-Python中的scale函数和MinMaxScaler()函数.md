@@ -48,8 +48,36 @@ print scaler
 print scaler.transform([[-1., 1., 0.]])  # 在其他数据集上使用
 ```
 
+一般会把train和test集放在一起做标准化，或者在train集上做标准化后，用同样的标准化器去标准化test集，此时可以用scaler
+
+实际应用中，需要做特征标准化的常见情景：SVM
 
 
+## 1.3 将特征数据缩放到一个范围 scale to a range 
+利用最大值和最小值进行缩放，通常是将数据缩放到0-1这个范围，或者是将每个特征的绝对值最大值缩放到单位尺度，分别利用MinMaxScaler和MaxAbsScaler实现。 
+使用这一方法的情况一般有两种： 
+(1) 特征的标准差较小 
+(2) 可以使稀疏数据集中的0值继续为0
+
+### 1）MinMaxScaler   计算方式是特征值减去最小值除以最大值减去最小值 
+
+```python
+from sklearn import preprocessing
+X=[[1.,-1.,2.],
+   [2.,0.,0.],
+   [0.,1.,-1.]]
+min_max_scaler = preprocessing.MinMaxScaler()
+x_scaled_minmax = min_max_scaler.fit_transform(X)
+print x_scaled_minmax
+ 
+#可以查看缩放算子的一些属性:
+#这个transformer的实例还能够应用于新的数据集，此时的缩放比例与之前训练集上的缩放比例是相同的。
+x_test = np.array([[3., 1., 4.]])
+print min_max_scaler.transform(x_test)
+ 
+print min_max_scaler.scale_  # 缩放比例=1/(max-min)
+print min_max_scaler.min_   # (x-min)/(max-min), 这里min_代表min/(max-min)
+```
 
 
 
