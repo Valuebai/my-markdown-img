@@ -4,6 +4,9 @@ tags: python,
 author:  Valuebai
 ---
 
+标准化：均值为0，方差为1的数据
+
+
 ```python
 # coding=utf-8
  
