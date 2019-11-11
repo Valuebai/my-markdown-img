@@ -43,6 +43,25 @@ author:  Valuebai
 ![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573468408513.png)
 
 
+特征处理是特征工程的核心部分，sklearn提供了较为完整的特征处理方法，包括数据预处理，特征选择，降维等。首次接触到sklearn，通常会被其丰富且方便的算法模型库吸引，但是这里介绍的特征处理库也十分强大！
+
+　　本文中使用sklearn中的IRIS（鸢尾花）数据集来对特征处理功能进行说明。IRIS数据集由Fisher在1936年整理，包含4个特征（Sepal.Length（花萼长度）、Sepal.Width（花萼宽度）、Petal.Length（花瓣长度）、Petal.Width（花瓣宽度）），特征值都为正浮点数，单位为厘米。目标值为鸢尾花的分类（Iris Setosa（山鸢尾）、Iris Versicolour（杂色鸢尾），Iris Virginica（维吉尼亚鸢尾））。导入IRIS数据集的代码如下：
+  
+  ```python
+  from sklearn.datasets import load_iris
+
+#导入IRIS数据集
+iris = load_iris()
+
+#特征矩阵
+iris.data
+
+#目标向量
+iris.target
+```
+
+
+
 
 
 
