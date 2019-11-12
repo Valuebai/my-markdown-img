@@ -484,9 +484,16 @@ class LR(LogisticRegression):
 4 #参数threshold为权值系数之差的阈值
 5 SelectFromModel(LR(threshold=0.5, C=0.1)).fit_transform(iris.data, iris.target)
 ```
+### 3.3.2 基于树模型的特征选择法
+　　树模型中GBDT也可用来作为基模型进行特征选择，使用feature_selection库的SelectFromModel类结合GBDT模型，来选择特征的代码如下：
 
-
-
+```python
+1 from sklearn.feature_selection import SelectFromModel
+2 from sklearn.ensemble import GradientBoostingClassifier
+3 
+4 #GBDT作为基模型的特征选择
+5 SelectFromModel(GradientBoostingClassifier()).fit_transform(iris.data, iris.target)
+```
 
 
 
