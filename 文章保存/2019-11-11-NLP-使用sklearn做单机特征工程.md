@@ -494,6 +494,14 @@ class LR(LogisticRegression):
 4 #GBDT作为基模型的特征选择
 5 SelectFromModel(GradientBoostingClassifier()).fit_transform(iris.data, iris.target)
 ```
+## 3.4 回顾
+
+|类	|所属方式	|说明|
+|---|---|---|
+|VarianceThreshold	|Filter|	方差选择法|
+|SelectKBest|	Filter|	可选关联系数、卡方校验、最大信息系数作为得分计算的方法|
+|RFE|	Wrapper	|递归地训练基模型，将权值系数较小的特征从特征集合中消除|
+|SelectFromModel|	Embedded|	训练基模型，选择权值系数较高的特征|
 
 
 
