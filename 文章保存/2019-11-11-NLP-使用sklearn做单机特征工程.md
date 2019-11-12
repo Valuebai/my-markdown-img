@@ -262,8 +262,30 @@ from sklearn.preprocessing import PolynomialFeatures
 PolynomialFeatures().fit_transform(iris.data)
 ```
 
+　　基于单变元函数的数据变换可以使用一个统一的方式完成，使用preproccessing库的FunctionTransformer对数据进行对数函数转换的代码如下：
+  
+```python
+1 from numpy import log1p
+2 from sklearn.preprocessing import FunctionTransformer
+3 
+4 #自定义转换函数为对数函数的数据变换
+5 #第一个参数是单变元函数
+6 FunctionTransformer(log1p).fit_transform(iris.data)
+```
 
 
+## 2.6 回顾
+
+|  类   |  功能   |  说明   |
+| --- | --- | --- |
+| StandardScaler| 	无量纲化	| 标准化，基于特征矩阵的列，将特征值转换至服从标准正态分布| 
+| MinMaxScaler| 	无量纲化| 	区间缩放，基于最大最小值，将特征值转换到[0, 1]区间上| 
+| Normalizer| 	正则化| 	基于特征矩阵的行，将样本向量转换为“单位向量”| 
+| Binarizer	| 二值化| 	基于给定阈值，将定量特征按阈值划分| 
+| OneHotEncoder	| 哑编码| 	将定性数据编码为定量数据| 
+| Imputer| 	缺失值计算	| 计算缺失值，缺失值可填充为均值等| 
+| PolynomialFeatures| 	多项式数据转换	| 多项式数据转换| 
+| FunctionTransformer	| 自定义单元数据转换	| 使用单变元的函数来转换数据| 
 
 
 
