@@ -382,16 +382,28 @@ SelectKBest(lambda X, Y: array(map(lambda x:pearsonr(x, Y), X.T)).T, k=2).fit_tr
 
 
 
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573551825253.png)
+
+为了处理定量数据，最大信息系数法被提出，使用feature_selection库的SelectKBest类结合最大信息系数法来选择特征的代码如下：
 
 
+```python
+from sklearn.feature_selection import SelectKBest
+from minepy import MINE
 
+#由于MINE的设计不是函数式的，定义mic方法将其为函数式的，返回一个二元组，二元组的第2项设置成固定的P值0.5
+def mic(x, y):
+    m = MINE()
+    m.compute_score(x, y)
+    return (m.mic(), 0.5)
 
+#选择K个最好的特征，返回特征选择后的数据
+SelectKBest(lambda X, Y: array(map(lambda x:mic(x, Y), X.T)).T, k=2).fit_transform(iris.data, iris.target)
+```
 
-
-
-
-
-
+## 3.2 Wrapper
+### 3.2.1 递归特征消除法
+　　递归消除特征法使用一个基模型来进行多轮训练，每轮训练后，消除若干权值系数的特征，再基于新的特征集进行下一轮训练。使用feature_selection库的RFE类来选择特征的代码如下：
 
 
 
