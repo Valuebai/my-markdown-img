@@ -252,6 +252,17 @@ array([[ 1.        ,  3.66666667]])
 ![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573549852077.png)
 
 
+　　使用preproccessing库的PolynomialFeatures类对数据进行多项式转换的代码如下：
+```python
+
+from sklearn.preprocessing import PolynomialFeatures
+ 
+#多项式转换
+#参数degree为度，默认值为2
+PolynomialFeatures().fit_transform(iris.data)
+```
+
+
 
 
 
