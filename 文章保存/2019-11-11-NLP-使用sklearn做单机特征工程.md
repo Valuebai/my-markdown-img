@@ -88,6 +88,17 @@ iris.target
 
 
 使用preproccessing库的StandardScaler类对数据进行标准化的代码如下：
+```python
+from sklearn.preprocessing import StandardScaler
+
+#标准化，返回值为标准化后的数据
+StandardScaler().fit_transform(iris.data)
+```
+
+
+
+
+
 
 
 【Me】https://github.com/Valuebai/
