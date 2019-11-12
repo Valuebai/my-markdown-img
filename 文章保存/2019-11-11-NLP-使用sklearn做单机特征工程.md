@@ -84,9 +84,10 @@ iris.target
 
 
 
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573549317955.png)
 
 
-
+使用preproccessing库的StandardScaler类对数据进行标准化的代码如下：
 
 
 【Me】https://github.com/Valuebai/
