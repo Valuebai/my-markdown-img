@@ -431,6 +431,16 @@ Higher noise (0.057964292079338148, 0.31700993885324746)
 
 
 
+> x = np.random.uniform(-1, 1, 100000)
+> print pearsonr(x, x**2)[0]
+> -0.00230804707612
+
+更多类似的例子参考 sample plots 。另外，如果仅仅根据相关系数这个值来判断的话，有时候会具有很强的误导性，如 Anscombe’s quartet ，最好把数据可视化出来，以免得出错误的结论。
+
+互信息和最大信息系数 (Mutual information and maximal information coefficient (MIC)
+
+　　经典的互信息（互信息为随机变量X与Y之间的互信息I(X;Y)为单个事件之间互信息的数学期望）也是评价定性自变量对定性因变量的相关性的，互信息计算公式如下：
+  
 
 
 
