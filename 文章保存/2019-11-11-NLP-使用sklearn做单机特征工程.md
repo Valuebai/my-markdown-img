@@ -288,7 +288,19 @@ PolynomialFeatures().fit_transform(iris.data)
 | FunctionTransformer	| 自定义单元数据转换	| 使用单变元的函数来转换数据| 
 
 
+# 3 特征选择(feature_selection)
+> 本文主要参考sklearn(0.18版为主，部分0.17)的1.13节的官方文档，以及一些工程实践整理而成。
 
+
+[Feature selection官网](https://scikit-learn.org/dev/modules/feature_selection.html#feature-selection)
+
+[Feature importances with forests of trees（Feature importances官网）](https://scikit-learn.org/dev/auto_examples/ensemble/plot_forest_importances.html#example-ensemble-plot-forest-importances-py)
+
+包：sklearn.feature_selection
+特征选择的原因如下：
+(1)降低复杂度
+(2)降低噪音
+(3)增加模型可读性
 
 
 
