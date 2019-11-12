@@ -308,6 +308,8 @@ SelectPercentile： 返回表现最佳的前r%个特征
 单个特征和某一类别之间相关性的计算方法有很多。最常用的有卡方检验（χ2）。其他方法还有互信息和信息熵。
 
 chi2： 卡方检验（χ2）
+
+
 当数据预处理完成后，我们需要选择有意义的特征输入机器学习的算法和模型进行训练。通常来说，从两个方面考虑来选择特征：
 
 - 特征是否发散：如果一个特征不发散，例如方差接近于0，也就是说样本在这个特征上基本上没有差异，这个特征对于样本的区分并没有什么用。
@@ -326,134 +328,22 @@ chi2： 卡方检验（χ2）
 拿到数据集，一个特征选择方法，往往很难同时完成这两个目的。通常情况下，选择一种自己最熟悉或者最方便的特征选择方法（往往目的是降维，而忽略了对特征和数据理解的目的）。本文将结合 Scikit-learn提供的例子 介绍几种常用的特征选择方法，它们各自的优缺点和问题。
 
 
+---
+　　我们使用sklearn中的feature_selection库来进行特征选择。
 
 ## 3.1 Filter
-### 3.1.1 移除低方差的特征 (Removing features with low variance)
-　　假设某特征的特征值只有0和1，并且在所有输入样本中，95%的实例的该特征取值都是1，那就可以认为这个特征作用不大。如果100%都是1，那这个特征就没意义了。当特征值都是离散型变量的时候这种方法才能用，如果是连续型变量，就需要将连续变量离散化之后才能用。而且实际当中，一般不太会有95%以上都取某个值的特征存在，所以这种方法虽然简单但是不太好用。可以把它作为特征选择的预处理，先去掉那些取值变化小的特征，然后再从接下来提到的的特征选择方法中选择合适的进行进一步的特征选择。
+### 3.1.1 方差选择法
+　　使用方差选择法，先要计算各个特征的方差，然后根据阈值，选择方差大于阈值的特征。使用feature_selection库的VarianceThreshold类来选择特征的代码如下：
 
 ```python
->>> from sklearn.feature_selection import VarianceThreshold
->>> X = [[0, 0, 1], [0, 1, 0], [1, 0, 0], [0, 1, 1], [0, 1, 0], [0, 1, 1]]
->>> sel = VarianceThreshold(threshold=(.8 * (1 - .8)))
->>> sel.fit_transform(X)
-array([[0, 1],
-       [1, 0],
-       [0, 0],
-       [1, 1],
-       [1, 0],
-       [1, 1]])
-```
-
-果然, VarianceThreshold 移除了第一列特征，第一列中特征值为0的概率达到了5/6.
-
-### 3.1.2 单变量特征选择 (Univariate feature selection)
-　　**单变量特征选择的原理是分别单独的计算每个变量的某个统计指标，根据该指标来判断哪些指标重要，剔除那些不重要的指标。**
-
-　　对于分类问题(y离散)，可采用：
-　　　　卡方检验，f_classif, mutual_info_classif，互信息
-　　对于回归问题(y连续)，可采用：
-　　　　皮尔森相关系数，f_regression, mutual_info_regression，最大信息系数
-
-这种方法比较简单，易于运行，易于理解，通常对于理解数据有较好的效果（但对特征优化、提高泛化能力来说不一定有效）。这种方法有许多改进的版本、变种。
-
-　　单变量特征选择基于单变量的统计测试来选择最佳特征。它可以看作预测模型的一项预处理。
-
-    ==Scikit-learn将特征选择程序用包含 transform 函数的对象来展现==：
-
-SelectKBest ：移除得分前 k 名以外的所有特征(取top k)
-SelectPercentile： 移除得分在用户指定百分比以后的特征(取top k%)
-对每个特征使用通用的单变量统计检验： 假正率(false positive rate) SelectFpr, 伪发现率(false discovery rate) SelectFdr, 或族系误差率 SelectFwe.
-GenericUnivariateSelect ：可以设置不同的策略来进行单变量特征选择。同时不同的选择策略也能够使用超参数寻优，从而让我们找到最佳的单变量特征选择策略。
-　　将特征输入到评分函数，返回一个单变量的f_score(F检验的值)或p-values(P值，假设检验中的一个标准，P-value用来和显著性水平作比较)，注意SelectKBest 和 SelectPercentile只有得分，没有p-value。
-
-For classification: chi2, f_classif, mutual_info_classif
-For regression: f_regression, mutual_info_regression
-
-
-
-**卡方(Chi2)检验**
-
-       经典的卡方检验是检验定性自变量对定性因变量的相关性。假设自变量有N种取值，因变量有M种取值，考虑自变量等于i且因变量等于j的样本频数的观察值与期望的差距，构建统计量：
-
-
-![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573551224670.png)
-
-假设有两个分类变量X和Y，它们的值域分别为{x1, x2}和{y1, y2}，其样本频数列联表为：
-
-|     |   y1  |  y2   |  总计   |
-| --- | --- | --- | --- |
-|  x1   |  a   |  b   |  a+b   |
-|  x2   |   c  |   d  |  c+d   |
-
-总计a+cb+da+b+c+d
-
-　　经典的卡方检验是检验定性自变量对定性因变量的相关性，针对分类问题。比如，我们可以对样本进行一次chi2测试来选择最佳的两项特征：
-```python
->>> from sklearn.datasets import load_iris
->>> from sklearn.feature_selection import SelectKBest
->>> from sklearn.feature_selection import chi2
->>> iris = load_iris()
->>> X, y = iris.data, iris.target
->>> X.shape
-(150, 4)
->>> X_new = SelectKBest(chi2, k=2).fit_transform(X, y)
->>> X_new.shape
-(150, 2)
-```
-
-**Pearson相关系数 (Pearson Correlation)**
-
-　　皮尔森相关系数是一种最简单的，能帮助理解特征和响应变量之间关系的方法，该方法衡量的是变量之间的线性相关性，结果的取值区间为[-1，1]，-1表示完全的负相关，+1表示完全的正相关，0表示没有线性相关。
-
-　　Pearson Correlation速度快、易于计算，经常在拿到数据(经过清洗和特征提取之后的)之后第一时间就执行。Scipy的 pearsonr 方法能够同时计算相关系数和p-value.
-  
-```python
-import numpy as np
-from scipy.stats import pearsonr
-np.random.seed(0)
-size = 300
-x = np.random.normal(0, 1, size)
-# pearsonr(x, y)的输入为特征矩阵和目标向量
-print("Lower noise", pearsonr(x, x + np.random.normal(0, 1, size)))
-print("Higher noise", pearsonr(x, x + np.random.normal(0, 10, size)))
->>>
-# 输出为二元组(sorce, p-value)的数组
-Lower noise (0.71824836862138386, 7.3240173129992273e-49)
-Higher noise (0.057964292079338148, 0.31700993885324746)
+1 from sklearn.feature_selection import VarianceThreshold
+2 
+3 #方差选择法，返回值为特征选择后的数据
+4 #参数threshold为方差的阈值
+5 VarianceThreshold(threshold=3).fit_transform(iris.data)
 ```
 
 
-这个例子中，我们比较了变量在加入噪音之前和之后的差异。当噪音比较小的时候，相关性很强，p-value很低。
-
-　　Scikit-learn提供的 f_regrssion 方法能够批量计算特征的f_score和p-value，非常方便，参考sklearn的 pipeline
-
-　　Pearson相关系数的一个明显缺陷是，作为特征排序机制，他只对线性关系敏感。如果关系是非线性的，即便两个变量具有一一对应的关系，Pearson相关性也可能会接近0。例如：
-
-
-
-> x = np.random.uniform(-1, 1, 100000)
-> print pearsonr(x, x**2)[0]
-> -0.00230804707612
-
-更多类似的例子参考 sample plots 。另外，如果仅仅根据相关系数这个值来判断的话，有时候会具有很强的误导性，如 Anscombe’s quartet ，最好把数据可视化出来，以免得出错误的结论。
-
-互信息和最大信息系数 (Mutual information and maximal information coefficient (MIC)
-
-　　经典的互信息（互信息为随机变量X与Y之间的互信息I(X;Y)为单个事件之间互信息的数学期望）也是评价定性自变量对定性因变量的相关性的，互信息计算公式如下：
-  
-
-
-
-
-互信息直接用于特征选择其实不是太方便：
-
-1、它不属于度量方式，也没有办法归一化，在不同数据及上的结果无法做比较；
-
-2、对于连续变量的计算不是很方便（X和Y都是集合，x，y都是离散的取值），通常变量需要先离散化，而互信息的结果对离散化的方式很敏感。
-
-　　最大信息系数克服了这两个问题。它首先寻找一种最优的离散化方式，然后把互信息取值转换成一种度量方式，取值区间在[0，1]。 minepy 提供了MIC功能。
-
-反过头来看y=x^2这个例子，MIC算出来的互信息值为1(最大的取值)
 
 
 
