@@ -343,9 +343,24 @@ chi2： 卡方检验（χ2）
 5 VarianceThreshold(threshold=3).fit_transform(iris.data)
 ```
 
+### 3.1.2 相关系数法
+　　使用相关系数法，先要计算各个特征对目标值的相关系数以及相关系数的P值。用feature_selection库的SelectKBest类结合相关系数来选择特征的代码如下：
+
+```python
+from sklearn.feature_selection import SelectKBest
+from scipy.stats import pearsonr
+
+#选择K个最好的特征，返回选择特征后的数据
+#第一个参数为计算评估特征是否好的函数，该函数输入特征矩阵和目标向量，输出二元组（评分，P值）的数组，数组第i项为第i个特征的评分和P值。在此定义为计算相关系数
+#参数k为选择的特征个数
+SelectKBest(lambda X, Y: array(map(lambda x:pearsonr(x, Y), X.T)).T, k=2).fit_transform(iris.data, iris.target)
+```
 
 
-
+### 3.1.3 卡方检验
+　　经典的卡方检验是检验定性自变量对定性因变量的相关性。假设自变量有N种取值，因变量有M种取值，考虑自变量等于i且因变量等于j的样本频数的观察值与期望的差距，构建统计量：
+  
+  
 
 
 
