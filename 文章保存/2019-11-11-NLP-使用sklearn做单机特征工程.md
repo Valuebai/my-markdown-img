@@ -178,6 +178,54 @@ from sklearn.preprocessing import OneHotEncoder
 OneHotEncoder().fit_transform(iris.target.reshape((-1,1)))
 ```
 
+## 2.4 缺失值计算
+
+由于IRIS数据集没有缺失值，故对数据集新增一个样本，4个特征均赋值为NaN，表示数据缺失。使用preproccessing库的Imputer类对数据进行缺失值计算的代码如下：
+
+在sklearn的preprocessing包中包含了对数据集中缺失值的处理，主要是应用Imputer类进行处理。
+
+首先需要说明的是，numpy的数组中可以使用np.nan/np.NaN（Not A Number）来代替缺失值，对于数组中是否存在nan可以使用np.isnan()来判定。
+
+使用type(np.nan)或者type(np.NaN)可以发现改值其实属于float类型，代码如下：
+
+```python
+>>> type(np.NaN)
+<type 'float'>
+>>> type(np.nan)
+<type 'float'>
+>>> np.NaN
+nan
+>>> np.nan
+nan
+```
+
+因此，如果要进行处理的数据集中包含缺失值一般步骤如下：
+
+1、使用字符串'nan'来代替数据集中的缺失值；
+
+2、将该数据集转换为浮点型便可以得到包含np.nan的数据集；
+
+3、使用sklearn.preprocessing.Imputer类来处理使用np.nan对缺失值进行编码过的数据集。
+
+代码如下：
+
+```python
+>>> from sklearn.preprocessing import Imputer
+>>> imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
+>>> X=np.array([[1, 2], [np.nan, 3], [7, 6]])
+>>> Y=[[np.nan, 2], [6, np.nan], [7, 6]]
+>>> imp.fit(X)
+Imputer(axis=0, copy=True, missing_values='NaN', strategy='mean', verbose=0)
+>>> imp.transform(Y)
+array([[ 4.        ,  2.        ],
+       [ 6.        ,  3.66666667],
+       [ 7.        ,  6.        ]])
+```
+
+
+上述代码使用数组X去“训练”一个Imputer类，然后用该类的对象去处理数组Y中的缺失值，缺失值的处理方式是使用X中的均值（axis=0表示按列进行）代替Y中的缺失值。当然也可以使用imp对象来对X数组本身进行处理。
+
+通常，我们的数据都保存在文件中，也不一定都是Numpy数组生成的，因此缺失值可能不一定是使用nan来编码的，对于这种情况可以参考以下代码：
 
 
 
