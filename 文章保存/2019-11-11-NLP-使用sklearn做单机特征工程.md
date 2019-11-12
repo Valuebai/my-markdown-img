@@ -155,6 +155,28 @@ array([[ 0.40..., -0.40...,  0.81...],
 
 定量特征二值化的核心在于设定一个阈值，大于阈值的赋值为1，小于等于阈值的赋值为0，公式表达如下：
 
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573549637977.png)
+
+使用preproccessing库的Binarizer类对数据进行二值化的代码如下：
+
+```python
+from sklearn.preprocessing import Binarizer
+ 
+#二值化，阈值设置为3，返回值为二值化后的数据
+Binarizer(threshold=3).fit_transform(iris.data)
+```
+
+
+## 2.3 对定性特征哑编码one-hot
+
+由于IRIS数据集的特征皆为定量特征，故使用其目标值进行哑编码（实际上是不需要的）。使用preproccessing库的OneHotEncoder类对数据进行哑编码的代码如下：
+
+```python
+from sklearn.preprocessing import OneHotEncoder
+ 
+#哑编码，对IRIS数据集的目标值，返回值为哑编码后的数据
+OneHotEncoder().fit_transform(iris.target.reshape((-1,1)))
+```
 
 
 
