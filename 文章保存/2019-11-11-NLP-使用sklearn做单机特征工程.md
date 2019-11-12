@@ -101,8 +101,30 @@ StandardScaler().fit_transform(iris.data)
   
   
   
+  ![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573549442134.png)
   
-  
+
+　使用preproccessing库的MinMaxScaler类对数据进行区间缩放的代码如下：
+
+
+```python
+from sklearn.preprocessing import MinMaxScaler
+
+#区间缩放，返回值为缩放到[0, 1]区间的数据
+MinMaxScaler().fit_transform(iris.data)
+
+```
+
+
+### 2.1.3 标准化与正则化的区别
+
+简单来说，标准化是依照特征矩阵的列处理数据，其通过求z-score的方法，将样本的特征值转换到同一量纲下。正则化是依照特征矩阵的行处理数据，其目的在于样本向量在点乘运算或其他核函数计算相似性时，拥有统一的标准，也就是说都转化为“单位向量”。规则为l2的归一化公式如下：
+
+
+
+
+
+
 
 
 
