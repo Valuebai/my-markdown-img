@@ -362,6 +362,42 @@ SelectKBest(lambda X, Y: array(map(lambda x:pearsonr(x, Y), X.T)).T, k=2).fit_tr
   
   
 
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573551750248.png)
+
+
+　这个统计量的含义简而言之就是自变量对因变量的相关性。用feature_selection库的SelectKBest类结合卡方检验来选择特征的代码如下：
+ 
+ 
+ ```python
+ 1 from sklearn.feature_selection import SelectKBest
+2 from sklearn.feature_selection import chi2
+3 
+4 #选择K个最好的特征，返回选择特征后的数据
+5 SelectKBest(chi2, k=2).fit_transform(iris.data, iris.target)
+```
+
+
+### 3.1.4 互信息法
+　　经典的互信息也是评价定性自变量对定性因变量的相关性的，互信息计算公式如下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
