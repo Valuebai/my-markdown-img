@@ -531,6 +531,17 @@ class LR(LogisticRegression):
 4 #参数n_components为降维后的维数
 5 LDA(n_components=2).fit_transform(iris.data, iris.target)
 ```
+
+## 4.3 回顾
+
+|库	|类	|说明|
+|---|---|---|
+|decomposition	|PCA	|主成分分析法|
+|lda	|LDA	|线性判别分析法|
+
+
+# 5 总结
+　　再让我们回归一下本文开始的特征工程的思维导图，我们可以使用sklearn完成几乎所有特征处理的工作，而且不管是数据预处理，还是特征选择，抑或降维，它们都是通过某个类的方法fit_transform完成的，fit_transform要不只带一个参数：特征矩阵，要不带两个参数：特征矩阵加目标向量。这些难道都是巧合吗？还是故意设计成这样？方法fit_transform中有fit这一单词，它和训练模型的fit方法有关联吗？接下来，我将在《使用sklearn优雅地进行数据挖掘》中阐述其中的奥妙！
   
 
 
