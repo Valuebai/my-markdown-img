@@ -227,6 +227,30 @@ array([[ 4.        ,  2.        ],
 
 通常，我们的数据都保存在文件中，也不一定都是Numpy数组生成的，因此缺失值可能不一定是使用nan来编码的，对于这种情况可以参考以下代码：
 
+```python
+>>> line='1,?'
+>>> line=line.replace(',?',',nan')
+>>> line
+'1,nan'
+>>> Z=line.split(',')
+>>> Z
+['1', 'nan']
+>>> Z=np.array(Z,dtype=float)
+>>> Z
+array([  1.,  nan])
+>>> imp.transform(Z)
+array([[ 1.        ,  3.66666667]])
+```
+
+
+## 2.5 数据变换
+
+　　基于多特征。
+
+      常见的数据变换有基于多项式的、基于指数函数的、基于对数函数的。4个特征，度为2的多项式转换公式如下：
+	  
+![enter description here](https://www.github.com/Valuebai/my-markdown-img/raw/master/小书匠/1573549852077.png)
+
 
 
 
