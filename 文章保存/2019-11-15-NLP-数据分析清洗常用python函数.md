@@ -5,6 +5,38 @@ author:  Valuebai
 ---
 
 
+```python
+# 业内习惯性将加载数据用函数def load_data()来处理
+# 加载数据，并将处理的数据存到pureContent.csv中
+
+# path_root: 文件的路径
+# filename: 默认名字为pureContent.csv
+def load_data(path_root, filename='pureContent.csv'):
+    pure_file = os.path.join(path_root, filename)
+	
+	# 判断是否存在处理过pure_file
+    if not os.path.exists(pure_file):
+	    print('File not exist! processing...')
+        news_file = os.path.join(path_root, 'sqlResult_1558435.csv')	# 要处理的原始文件
+        news_content = pd.read_csv(news_file, encoding='gb18030')
+        #fillna()会将DataFrame中nan数据的数据填充为想要的数据，并返回填充后的结果。这里讲NANt填充为空
+        news_content['content'] = news_content['content'].fillna('')
+        pure_content = pd.DataFrame()
+        pure_content['content'] = news_content['content']
+        pure_content = pure_content.fillna('')
+        pure_content['tokenized_content'] = pure_content['content'].apply(cut)
+        pure_content.to_csv(pure_file, encoding='gb18030')
+    else:
+        print('File found! ')
+        pure_content = pd.read_csv(pure_file, encoding='gb18030')
+        pure_content = pure_content.fillna('')
+    return pure_content
+	
+```
+
+
+
+
 
 ```python
 # 数据清洗 - 去除空值
