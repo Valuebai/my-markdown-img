@@ -18,7 +18,8 @@ def load_data(path_root, filename='pureContent.csv'):
     if not os.path.exists(pure_file):
 	    print('File not exist! processing...')
         news_file = os.path.join(path_root, 'sqlResult_1558435.csv')	# 要处理的原始文件
-        news_content = pd.read_csv(news_file, encoding='gb18030')
+        news_content = pd.read_csv(news_file, encoding='gb18030')		# 注意这里编码为gb18030
+		
         #fillna()会将DataFrame中nan数据的数据填充为想要的数据，并返回填充后的结果。这里讲NANt填充为空
         news_content['content'] = news_content['content'].fillna('')
         pure_content = pd.DataFrame()
