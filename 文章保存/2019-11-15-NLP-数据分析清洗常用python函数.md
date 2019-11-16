@@ -6,6 +6,16 @@ author:  Valuebai
 
 
 ```python
+# 加载csv数据
+def load_data_from_csv(file_name, header=0, encoding="utf-8"):
+    """
+    加载数据成dataframe
+    """
+    df = pd.read_csv(file_name, header=header, encoding=encoding)
+    return df
+```
+
+```python
 # 业内习惯性将加载数据用函数def load_data()来处理
 # 加载数据，并将处理的数据存到pureContent.csv中
 
